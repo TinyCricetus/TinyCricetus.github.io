@@ -5,14 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RimWorld(环世界) - 仓鼠窝</title>
+    <title>JavaScript单线程如何回调函数 - 仓鼠窝</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="仓鼠,"> 
-    <meta name="description" content="仓鼠窝,今天心血闲来无事看见一款和They Are Billions差不多的游戏，以为也是打僵尸的，于是马上下手了。
-
-但是但是但是！没想到开局三人一狗，被野外一种叫啥来着(碰击兽)，野外一公一母，就给我一,"> 
+    <meta name="description" content="仓鼠窝,闲话听过Node.js的一部分人会认为这是一种语言，常常看见有人问”NodeJS与Python之间哪种语言更好”这种问题。实际上，Node.js并不是一种语言，而仍然是JavaScript脚本，No,"> 
     <meta name="author" content="TinyCricetus"> 
     <link rel="alternative" href="atom.xml" title="仓鼠窝" type="application/atom+xml"> 
     <link rel="icon" href="/blog/img/favicon.png"> 
@@ -42,7 +40,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;" data-url="http://tinycricetus.gitee.io/blog"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">RimWorld(环世界)</h3>
+    <h3 class="subtitle">JavaScript单线程如何回调函数</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -60,24 +58,46 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">RimWorld(环世界)</h1>
+        <h1 class="title">JavaScript单线程如何回调函数</h1>
         <div class="stuff">
             <span>三月 03, 2020</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/blog/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/blog/tags/%E5%9B%9E%E8%B0%83/" rel="tag">回调</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <p>今天心血闲来无事看见一款和They Are Billions差不多的游戏，以为也是打僵尸的，于是<br>马上下手了。</p>
-<p><img src="https://gitee.com/tinycricetus/blog/raw/master/img/game/rimworld.png" alt=""></p>
-<h1 id="但是但是"><a href="#但是但是" class="headerlink" title="但是但是"></a>但是但是</h1><h2 id="但是！"><a href="#但是！" class="headerlink" title="但是！"></a>但是！</h2><p>没想到开局三人一狗，被野外一种叫啥来着(碰击兽)，野外一公一母，就给我一个一个的从</p>
-<p>大活人打到倒地，然后去救人又被打到休克，最后全体失去能力还有失去知觉，只能等死。</p>
-<p>大概等了两天，全都流血过多死了，哎，血崩。</p>
+            <h2 id="闲话"><a href="#闲话" class="headerlink" title="闲话"></a>闲话</h2><p>听过Node.js的一部分人会认为这是一种语言，常常看见有人问”NodeJS与Python之间哪种语言更好”这种问题。实际上，Node.js并不是一种语言，而仍然是JavaScript脚本，Node.js只不过是类似于一种运行环境或者说是一个平台，使用JS构造出来的，Node.js让JS可以在客户端与服务端之间来回跑。</p>
 <blockquote>
-<p>附：最后游戏结束出来一看，只玩了一个半小时，于是二话不说赶紧退款……也算是保住</p>
-<p>了最后一丝希望QAQ</p>
+<p>简单来说Node.js就是可以运行在服务端的JavaScript，是一个事件驱动I/O服务端的js环境，基于谷歌的V8所带来的超高性能，速度极快。</p>
 </blockquote>
+<h2 id="为什么JavaScript是单线程"><a href="#为什么JavaScript是单线程" class="headerlink" title="为什么JavaScript是单线程"></a>为什么JavaScript是单线程</h2><p>JavaScript其主要作用是与用户互动以及操作文档对象模型（DOM），如果是多线程，那在同时对DOM同一个节点增加删除的时候将会不好控制，所以出于复杂的同步问题考虑，JS从诞生就决定了其核心为单线程。</p>
+<blockquote>
+<p>为了利用多核CPU的计算能力，HTML5提出了WebWorker标准，它允许JS脚本创建多个进程，但是子线程完全受控于主线程，而且不得操控DOM。所以即便是这个新标准也没有改变JS是单线程的本质。</p>
+</blockquote>
+<h2 id="异步核心-任务队列"><a href="#异步核心-任务队列" class="headerlink" title="异步核心-任务队列"></a>异步核心-任务队列</h2><p>等待一个任务完成再继续下一个任务这种做法使得程序在等待浪费时间，JS的设计者也同样意识到了这一点，所以JS的主线程可以不管IO设备，挂起等待中的任务去运行下一个任务，待到IO设备返回结果之后，再回头把挂起的任务继续执行下去。</p>
+<p>具体来说，异步执行的运行机制如下：</p>
+<ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈(execution context stack).</li>
+<li>主线程之外，存在一个任务队列。只要异步任务有了运行结果，就在队列中放置一个事件。</li>
+<li>一旦执行栈之中的所有同步任务执行完毕，系统就会读取任务队列中的事件，看看哪些对应的异步任务已经结束等待状态，便将其放入执行栈可是执行。</li>
+<li>主线程会不断重复第三步。</li>
+</ol>
+<blockquote>
+<p> 在JS中任务被分为两种。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>同步任务(synchronous)：在主线程上排队执行的任务，只能等待前一个任务完成才能进行下一个任务。</li>
+<li>异步任务(asynchronous)：不进入主线程，进入任务队列(task queue)，只有通知主线程某个异步任务可以执行了，该任务才会进入主线程执行。</li>
+</ul>
+</blockquote>
+<h2 id="回调-callback"><a href="#回调-callback" class="headerlink" title="回调(callback)"></a>回调(callback)</h2><blockquote>
+<p>setTimeout( () =&gt; { console.log(1); }, 0 );</p>
+<p>console.log(2);</p>
+</blockquote>
+<p>上面的代码中无论如何将定时器中的0改变，控制台输出顺序一定会是2 1，因为只有在执行完第二行之后系统才回去执行任务队列中的回调函数。因为回调时被挂起的任务，只能是在主线程最早可得的空闲时间来执行。</p>
+<p>需要注意的是，setTimeout只是将事件插入了任务队列，必须等待当前代码执行栈执行完毕，主线程才会去执行它指定的回调函数。如果当前代码的耗时很长，有可能需要等待很久，所以没有办法保证，回到函数一定会在定时器指定的时间执行。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
