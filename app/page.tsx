@@ -1,3 +1,10 @@
+import Link from "next/link"
+
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+  return (
+    <div>
+      <Link href="/dashboard">Go to dashboard</Link>
+      <h1>Hello, Home page!</h1>
+    </div>
+  )
 }
