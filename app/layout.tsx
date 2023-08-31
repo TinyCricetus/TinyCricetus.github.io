@@ -1,12 +1,13 @@
+import './global.css'
 
-export default function RootLayout({
-  children,
-}: {
+interface LayoutConfig {
   children: React.ReactNode
-}) {
+}
+
+export default function RootLayout(config: LayoutConfig) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{config.children}</body>
     </html>
   )
 }

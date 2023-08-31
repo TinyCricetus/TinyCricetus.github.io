@@ -1,10 +1,12 @@
-import Link from "next/link"
+import { Metadata } from 'next'
+import { Particle } from '../components/particle'
+
+export const metadata: Metadata = {
+  title: '仓鼠庭'
+}
 
 export default function Page() {
   return (
-    <div>
-      <Link href="/dashboard">Go to dashboard</Link>
-      <h1>Hello, Home page!</h1>
-    </div>
+    <Particle></Particle>
   )
 }
