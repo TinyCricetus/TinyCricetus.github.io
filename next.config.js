@@ -2,7 +2,8 @@
 const nextConfig = {
   /* config options here */
   output: 'export',
-  poweredByHeader: false
+  poweredByHeader: false,
+  distDir: 'docs'
 }
 
 module.exports = nextConfig

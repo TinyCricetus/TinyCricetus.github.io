@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "serve out",
-    "lint": "next lint",
-    "deploy": "next build && git add out/ && git commit -m \"deploy\" && git subtree push --prefix out origin deploy && git reset HEAD~1 --hard && rm -rf out"
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
