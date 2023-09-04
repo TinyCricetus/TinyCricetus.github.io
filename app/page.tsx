@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Particle } from '../components/particle'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '仓鼠庭'
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Particle></Particle>
+    <div>
+      <Link href="/dashboard">navigate</Link>
+      <Particle></Particle>
+    </div>
   )
 }

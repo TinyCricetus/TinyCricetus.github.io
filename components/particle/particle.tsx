@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import styles from './particle.module.css'
-import { ImageParticle, useRAF } from 'text-particle'
+import { ImageParticle } from 'text-particle'
 
 export function Particle() {
   const container = useRef<HTMLDivElement | null>(null)
@@ -22,7 +22,7 @@ export function Particle() {
       enableContinuousEasing: true,
       enableWebGL: true,
       pixelFilter: (r, g, b, a) => {
-        return (r < 255 && g < 255)
+        return (r + g + b) / 3 < 245
       }
     })
 
