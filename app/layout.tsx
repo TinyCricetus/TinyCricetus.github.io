@@ -7,7 +7,9 @@ interface LayoutConfig {
 export default function RootLayout(config: LayoutConfig) {
   return (
     <html lang="en">
-      <body>{config.children}</body>
+      <body>
+        {config.children}
+      </body>
     </html>
   )
 }
