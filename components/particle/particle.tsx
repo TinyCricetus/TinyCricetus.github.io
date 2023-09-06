@@ -9,10 +9,10 @@ export function Particle() {
   const container = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    let currentImage = '/images/1.webp'
+    let currentImage = '/images/1.png'
 
     const images = Array.from({ length: 7 }).map((_, i) => {
-      return `/images/${i + 1}.webp`
+      return `/images/${i + 1}.png`
     })
 
     const particle = new ImageParticle(container.current!, {
@@ -25,7 +25,7 @@ export function Particle() {
       enableContinuousEasing: true,
       // enableWebGL: true,
       pixelFilter: (r, g, b, a) => {
-        return (r + g + b) / 3 < 240 && a > 0
+        return a > 0
       }
     })
 

@@ -6,23 +6,23 @@ import styles from './header.module.css'
 const navItems = [
   {
     name: '璃月',
-    particleImage: '/images/6.webp'
+    particleImage: '/images/6.png'
   },
   {
     name: '蒙德',
-    particleImage: '/images/2.webp'
+    particleImage: '/images/2.png'
   },
   {
     name: '稻妻',
-    particleImage: '/images/7.webp'
+    particleImage: '/images/7.png'
   },
   {
     name: '须弥',
-    particleImage: '/images/4.webp'
+    particleImage: '/images/4.png'
   },
   {
     name: '枫丹',
-    particleImage: '/images/3.webp'
+    particleImage: '/images/3.png'
   }
 ]
 
