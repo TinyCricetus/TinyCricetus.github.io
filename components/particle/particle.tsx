@@ -16,13 +16,13 @@ export function Particle() {
       source: '/images/1.webp',
       autoFit: true,
       color: '#FFFFFF',
-      particleGap: 4,
-      particleRadius: 2,
+      particleGap: 6,
+      particleRadius: 1,
       showMouseCircle: true,
       enableContinuousEasing: true,
-      enableWebGL: true,
+      // enableWebGL: true,
       pixelFilter: (r, g, b, a) => {
-        return (r + g + b) / 3 < 245
+        return (r + g + b) / 3 < 240 && a > 0
       }
     })
 
