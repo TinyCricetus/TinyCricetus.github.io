@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #343537;
+  box-shadow: 0 0 15px #000;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  position: fixed;
+  top: 20px;
+  left: 50%;
+
+  color: white;
+  width: 500px;
+  border-radius: 10px;
+
+  transform: translate(-50%);
+  overflow: hidden;
+}
+
+.header-item {
+  cursor: pointer;
+  flex: 1;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+}
+
+.header-item:hover {
+  color: bisque;
+}

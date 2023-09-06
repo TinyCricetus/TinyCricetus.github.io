@@ -3,17 +3,20 @@
 import { useEffect, useRef } from 'react'
 import styles from './particle.module.css'
 import { ImageParticle } from 'text-particle'
+import { getCurrentImage, particleEvent } from '.'
 
 export function Particle() {
   const container = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
+    let currentImage = '/images/1.webp'
+
     const images = Array.from({ length: 7 }).map((_, i) => {
       return `/images/${i + 1}.webp`
     })
 
     const particle = new ImageParticle(container.current!, {
-      source: '/images/1.webp',
+      source: currentImage,
       autoFit: true,
       color: '#FFFFFF',
       particleGap: 6,
@@ -30,8 +33,9 @@ export function Particle() {
 
     const DELAY = 10000
     let index = 0
+    let timer: any = null
     const animate = () => {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         index = (index + 1) % images.length
         particle.transitionTo(images[index])
 
@@ -39,7 +43,26 @@ export function Particle() {
       }, DELAY)
     }
 
+    const stop = () => {
+      clearTimeout(timer)
+    }
+
     animate()
+
+    const subscription = particleEvent.subscribe(() => {
+      currentImage = getCurrentImage()
+
+      if (currentImage) {
+        stop()
+        particle.transitionTo(currentImage)
+      } else {
+        animate()
+      }
+    })
+
+    return () => {
+      subscription.unsubscribe()
+    }
   }, [])
 
   return (
