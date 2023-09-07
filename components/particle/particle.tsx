@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import styles from './particle.module.css'
 import { ImageParticle } from 'text-particle'
 import { getCurrentImage, particleEvent } from '.'
+import { Subscription, debounceTime, fromEvent } from 'rxjs'
 
 export function Particle() {
   const container = useRef<HTMLDivElement | null>(null)
@@ -49,19 +50,27 @@ export function Particle() {
 
     animate()
 
-    const subscription = particleEvent.subscribe(() => {
-      currentImage = getCurrentImage()
+    const subscriptions: Subscription[] = []
 
-      if (currentImage) {
-        stop()
-        particle.transitionTo(currentImage)
-      } else {
-        animate()
-      }
-    })
+    subscriptions.push(
+      particleEvent.subscribe(() => {
+        currentImage = getCurrentImage()
+
+        if (currentImage) {
+          stop()
+          particle.transitionTo(currentImage)
+        } else {
+          animate()
+        }
+      }),
+
+      fromEvent(window, 'resize').pipe(debounceTime(100)).subscribe(() => {
+        particle.resize()
+      })
+    )
 
     return () => {
-      subscription.unsubscribe()
+      subscriptions.forEach(s => s.unsubscribe())
     }
   }, [])
 
