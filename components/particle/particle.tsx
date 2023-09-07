@@ -18,12 +18,12 @@ export function Particle() {
     const particle = new ImageParticle(container.current!, {
       source: currentImage,
       autoFit: true,
-      color: '#FFFFFF',
-      particleGap: 6,
-      particleRadius: 1,
+      particleGap: 5,
+      particleRadius: 2,
       showMouseCircle: true,
       enableContinuousEasing: true,
-      // enableWebGL: true,
+      enableWebGL: true,
+      moveProportionPerFrame: 60,
       pixelFilter: (r, g, b, a) => {
         return a > 0
       }
@@ -31,7 +31,7 @@ export function Particle() {
 
     particle.render()
 
-    const DELAY = 10000
+    const DELAY = 12000
     let index = 0
     let timer: any = null
     const animate = () => {
