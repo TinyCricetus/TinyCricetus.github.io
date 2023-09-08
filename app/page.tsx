@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="page-main">
+    <div className="main">
       <Particle></Particle>
     </div>
   )

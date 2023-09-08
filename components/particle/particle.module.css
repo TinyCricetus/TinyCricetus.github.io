@@ -1,4 +1,8 @@
 .container {
+  overflow: hidden;
+}
+
+.particle_root {
   margin-top: 100px;
   width: 100%;
   height: 600px;

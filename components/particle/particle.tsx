@@ -24,10 +24,7 @@ export function Particle() {
       showMouseCircle: true,
       enableContinuousEasing: true,
       enableWebGL: true,
-      moveProportionPerFrame: 60,
-      pixelFilter: (r, g, b, a) => {
-        return a > 0
-      }
+      moveProportionPerFrame: 60
     })
 
     particle.render()
@@ -75,6 +72,8 @@ export function Particle() {
   }, [])
 
   return (
-    <div ref={container} className={styles.container}></div>
+    <div className={styles.container}>
+      <div ref={container} className={styles.particle_root}></div>
+    </div>
   )
 }

@@ -9,10 +9,8 @@ export default function RootLayout(config: LayoutConfig) {
   return (
     <html lang="en">
       <body>
-        <div className="main">
-          <Header />
-          {config.children}
-        </div>
+        <Header />
+        {config.children}
       </body>
     </html>
   )
