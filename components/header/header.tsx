@@ -34,8 +34,10 @@ export function Header() {
 
   const listRef = useRef<HTMLDivElement | null>(null)
   const [floatStyle, updateFloatStyle] = useState({
+    top: '0px',
     left: '0px',
     width: '0px',
+    height: '0px',
     opacity: 0,
     backgroundColor: 'gray'
   })
@@ -47,16 +49,31 @@ export function Header() {
     const list = listRef.current
     const target = list?.children.item(index)
     if (list && target) {
-      const left = target.getBoundingClientRect().left - list.getBoundingClientRect().left
-      const width = target.clientWidth
+      const listRect = list.getBoundingClientRect()
+      const targetRect = target.getBoundingClientRect()
+      const { height, width } = targetRect
 
-      updateFloatStyle({
+      const commonStyle = {
         ...floatStyle,
-        left: left + 'px',
         width: width + 'px',
+        height: height + 'px',
         opacity: 0.2,
         backgroundColor: `var(--color-${index})`
-      })
+      }
+
+      if (listRect.width < 500) {
+        updateFloatStyle({
+          ...commonStyle,
+          left: '0px',
+          top: (targetRect.top - listRect.top) + 'px',
+        })
+      } else {
+        updateFloatStyle({
+          ...commonStyle,
+          top: '0px',
+          left: (targetRect.left - listRect.left) + 'px',
+        })
+      }
     }
   }
 
