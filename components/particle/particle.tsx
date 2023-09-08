@@ -5,16 +5,17 @@ import styles from './particle.module.css'
 import { ImageParticle } from 'text-particle'
 import { getCurrentImage, particleEvent } from '.'
 import { Subscription, debounceTime, fromEvent } from 'rxjs'
+import { IMAGES } from 'components/shared'
+
+
 
 export function Particle() {
   const container = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    let currentImage = '/images/1.png'
+    const images = IMAGES
 
-    const images = Array.from({ length: 7 }).map((_, i) => {
-      return `/images/${i + 1}.png`
-    })
+    let currentImage = images[0]
 
     const particle = new ImageParticle(container.current!, {
       source: currentImage,

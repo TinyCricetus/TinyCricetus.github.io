@@ -1,8 +1,9 @@
 .root {
   width: 100%;
   height: 100%;
-  background-image: url(../../public/static/tree.png);
-  background-size: contain;
+  background-image: url(https://pic.imgdb.cn/item/64faedc2661c6c8e54b019df.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 

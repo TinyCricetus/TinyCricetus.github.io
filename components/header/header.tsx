@@ -4,27 +4,28 @@ import { triggerParticleChange } from 'components/particle'
 import styles from './header.module.css'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { IMAGES } from 'components/shared'
 
 const navItems = [
   {
     name: '璃月',
-    particleImage: '/images/6.png'
+    particleImage: IMAGES[5]
   },
   {
     name: '蒙德',
-    particleImage: '/images/2.png'
+    particleImage: IMAGES[1]
   },
   {
     name: '稻妻',
-    particleImage: '/images/7.png'
+    particleImage: IMAGES[6]
   },
   {
     name: '须弥',
-    particleImage: '/images/4.png'
+    particleImage: IMAGES[3]
   },
   {
     name: '枫丹',
-    particleImage: '/images/3.png'
+    particleImage: IMAGES[2]
   }
 ]
 
