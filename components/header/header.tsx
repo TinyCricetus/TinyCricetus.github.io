@@ -53,27 +53,15 @@ export function Header() {
       const targetRect = target.getBoundingClientRect()
       const { height, width } = targetRect
 
-      const commonStyle = {
+      updateFloatStyle({
         ...floatStyle,
         width: width + 'px',
         height: height + 'px',
         opacity: 0.2,
-        backgroundColor: `var(--color-${index})`
-      }
-
-      if (listRect.width < 500) {
-        updateFloatStyle({
-          ...commonStyle,
-          left: '0px',
-          top: (targetRect.top - listRect.top) + 'px',
-        })
-      } else {
-        updateFloatStyle({
-          ...commonStyle,
-          top: '0px',
-          left: (targetRect.left - listRect.left) + 'px',
-        })
-      }
+        backgroundColor: `var(--color-${index})`,
+        top: '0px',
+        left: (targetRect.left - listRect.left) + 'px',
+      })
     }
   }
 

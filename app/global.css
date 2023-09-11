@@ -8,6 +8,10 @@ body {
 
   color: white;
   background-color: #292929;
+
+  background-image: url(https://pic.imgdb.cn/item/64faedc2661c6c8e54b019df.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main {

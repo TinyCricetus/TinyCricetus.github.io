@@ -1,19 +1,10 @@
 .root {
   width: 100%;
   height: 100%;
-  background-image: url(https://pic.imgdb.cn/item/64faedc2661c6c8e54b019df.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
   overflow: hidden;
 }
 
 .main {
-  --main-height: 50px;
-
-  width: 500px;
-  height: var(--main-height);
-  line-height: var(--main-height);
-
   margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
@@ -25,4 +16,5 @@
   opacity: 0.6;
   text-align: center;
   border-radius: 10px;
+  overflow: hidden;
 }

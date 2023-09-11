@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Particle } from '../components/particle'
+// import { Particle } from '../components/particle'
 
 export const metadata: Metadata = {
   title: '仓鼠庭'
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="main">
-      <Particle></Particle>
+      {/* <Particle></Particle> */}
     </div>
   )
 }
