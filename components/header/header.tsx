@@ -57,7 +57,7 @@ export function Header() {
         ...floatStyle,
         width: width + 'px',
         height: height + 'px',
-        opacity: 0.2,
+        opacity: 0.3,
         backgroundColor: `var(--color-${index})`,
         top: '0px',
         left: (targetRect.left - listRect.left) + 'px',

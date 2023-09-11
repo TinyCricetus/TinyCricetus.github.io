@@ -5,13 +5,13 @@
   --color-3: #6cd62c;
   --color-4: #0499ff;
 
+  position: relative;
+  overflow: hidden;
+
   background-color: #34353700;
   box-shadow: 0 0 15px #000;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-
-  position: relative;
-  overflow: hidden;
 }
 
 .nav_items {
